@@ -23,4 +23,13 @@ This tool allows you to process video files by either concatenating them or proc
 4. The processed video pieces will be saved in the output folder as MP4 files with the H.264 codec.
 5. If you have front and end video clips, the processed video pieces will be named as `output_1.mp4`, `output_2.mp4`, `output_3.mp4`, etc.
 
-Make sure you have FFmpeg installed and the correct paths set in your environment variables.
+## Prerequisites
+
+- FFmpeg: Make sure you have FFmpeg installed and the correct paths set in your environment variables.
+
+## Installation
+
+If you don't have `moviepy` installed, you can install it using the following command:
+
+```shell
+pip install moviepy
