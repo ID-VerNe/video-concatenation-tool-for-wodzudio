@@ -4,24 +4,21 @@ This tool allows you to process video files by either concatenating them or proc
 
 ## Features
 
-- Concatenate video pieces: If you have front and end video clips, you can set the `concatenate_flag` to `True` and provide the correct paths to the front and end video clips. The tool will concatenate the video pieces together.
-- Process individual video pieces: If you don't have front and end video clips, you can set the `concatenate_flag` to `False`. The tool will process each video piece individually and create a processed video for each piece.
-- Set height and width: Make sure the height and width of the processed video match the front and end video clips. If you don't have front and end video clips, set the height and width to match the target video.
-- Adjust frame rate: You can set the frame rate of the processed video to any value, but it is recommended to set it to 25. If you have front and end video clips, make sure the frame rate matches those clips.
-- Duration of video pieces: The duration of each video piece can be set to any value, but it is recommended to set it to 300 seconds.
-- FFmpeg codec: You can choose the FFmpeg codec based on your hardware. Set the `ffmpeg_codec` to one of the following options:
-  - "nvenc" for NVIDIA hardware acceleration
-  - "h264_qsv" for Intel Quick Sync Video hardware acceleration
-  - "h264_amf" for AMD hardware acceleration
-  - "libx264" for CPU-only processing.
+- **Splitting and Concatenation**: The tool can split a video into smaller pieces based on a specified duration. These pieces can be optionally concatenated with front and end video clips. The `concatenate_flag` and `concatenate_param` control the concatenation behavior. If `concatenate_flag` is set to `True`, `concatenate_param` can have three possible values:
+  - 1: Only the split piece is output.
+  - 2: The split piece and the end clip are output.
+  - 3: The front clip, the split piece, and the end clip are output.
+- **Video Resizing**: The tool allows you to set the height and width of the processed video. This is particularly useful when the front and end clips have different dimensions from the main video.
+- **Frame Rate Adjustment**: You can set the frame rate of the processed video to any value. If you have front and end video clips, make sure the frame rate matches those clips.
+- **Fade-In and Fade-Out**: Each video piece can be set to fade in and out over a specified duration.
+- **Codec Selection**: The tool supports multiple FFmpeg codecs, including hardware-accelerated codecs for NVIDIA, Intel, and AMD. You can choose the codec that best suits your hardware and quality requirements.
 
 ## Usage
 
-1. Set the desired values for the variables in the code.
+1. Set the desired values for the variables in the code or in the `config.ini` file.
 2. Run the script to process the videos.
 3. The output folder will be created if it doesn't exist.
-4. The processed video pieces will be saved in the output folder as MP4 files with the H.264 codec.
-5. If you have front and end video clips, the processed video pieces will be named as `output_1.mp4`, `output_2.mp4`, `output_3.mp4`, etc.
+4. The processed video pieces will be saved in the output folder as MP4 files with the selected codec.
 
 ## Installation
 
@@ -54,6 +51,3 @@ Make sure you have Python and pip installed on your system before running the ab
      ```
 
    Make sure FFmpeg is installed and configured correctly before proceeding.
-
-  
-
